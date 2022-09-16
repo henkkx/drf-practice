@@ -1,0 +1,1 @@
+[{"model": "shopping_list.shoppinglist", "pk": "ae4fed73-56fa-4414-890d-4ff81dc5d5f2", "fields": {"name": "new list"}}, {"model": "shopping_list.shoppinglist", "pk": "cf1a0830-5699-42f0-865a-785e787ad370", "fields": {"name": "second list"}}]
