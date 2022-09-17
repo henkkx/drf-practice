@@ -1,6 +1,15 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 
 from shopping_list.models import ShoppingItem, ShoppingList
+
+UserModel = get_user_model()
+
+
+class UserSerializer(serializers.ModelSerializer):  # NEW!
+    class Meta:
+        model = UserModel
+        fields = ["id", "username"]
 
 
 class ShoppingItemSerializer(serializers.ModelSerializer):
@@ -18,7 +27,8 @@ class ShoppingItemSerializer(serializers.ModelSerializer):
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     shopping_items = ShoppingItemSerializer(many=True, read_only=True)
+    members = UserSerializer(many=True, read_only=True)
 
     class Meta:
         model = ShoppingList
-        fields = ['id', 'name', 'shopping_items']
+        fields = ['id', 'name', 'shopping_items', 'members']
